@@ -1,0 +1,164 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gay Detector</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #0077ff, #00ccff, #00ffcc);
+            text-align: center;
+            color: white;
+            padding: 20px;
+            animation: bgPulse 8s infinite;
+        }
+        @keyframes bgPulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        input {
+            padding: 12px;
+            font-size: 1.2em;
+            width: 80%;
+            border: none;
+            border-radius: 50px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        button {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 20px 0;
+        }
+        button:hover {
+            background: #ff3300;
+            transform: scale(1.05);
+        }
+        #result {
+            font-size: 1.8em;
+            margin: 20px;
+            min-height: 100px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .meter {
+            width: 80%;
+            height: 30px;
+            background: #333;
+            border-radius: 15px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+        .meter-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff3300, #ffcc00);
+            transition: width 2s;
+        }
+        .disclaimer {
+            font-size: 0.8em;
+            color: #ccc;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Gay meter Chek apakah kamu gay?🤨 🔍</h1>
+        <p><em>"Gay meter- di buat oleh Adi pandu"</em></p>
+        
+        <input type="text" id="nameInput" placeholder="Masukan nama" required>
+        <button onclick="scanStraightness()">🔎 SCAN!</button>
+        
+        <div class="meter">
+            <div class="meter-bar" id="meterBar"></div>
+        </div>
+        
+        <div id="result"></div>
+        
+        <div class="disclaimer">
+            <p>*<strong>DISCLAIMER:</strong> Jangan lupa sholat! ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        function scanStraightness() {
+            const name = document.getElementById("nameInput").value.trim();
+            if (!name) {
+                alert("Please enter a name! (Any name will do!)");
+                return;
+            }
+
+            const resultDiv = document.getElementById("result");
+            const meterBar = document.getElementById("meterBar");
+            
+            // Reset
+            resultDiv.style.opacity = "0";
+            meterBar.style.width = "0%";
+            
+            // Dramatic scanning sequence
+            resultDiv.innerHTML = `<p>Scanning <strong>${name}</strong> for straightness... 🔍</p>`;
+            resultDiv.style.opacity = "1";
+            
+            setTimeout(() => {
+                resultDiv.innerHTML = `<p>Analyzing <strong>${name}</strong>'s vibes... 📊</p>`;
+                meterBar.style.width = "30%";
+            }, 1000);
+            
+            setTimeout(() => {
+                resultDiv.innerHTML = `<p>Checking <strong>${name}</strong>'s playlist... 🎵</p>`;
+                meterBar.style.width = "60%";
+            }, 2000);
+            
+            setTimeout(() => {
+                resultDiv.innerHTML = `<p>Consulting the Council of Heteronormativity... 👔</p>`;
+                meterBar.style.width = "90%";
+            }, 3000);
+            
+            setTimeout(() => {
+                // Random ridiculous result
+                const randomPercent = Math.floor(Math.random() * 100) + 1;
+                const results = [
+                    `${name} is <strong>${randomPercent}% Straight</strong>! ${getFunnyComment(randomPercent)}`,
+                    `${name}'s straightness level: <strong>${randomPercent}%</strong>! ${getFunnyComment(randomPercent)}`,
+                    `RESULTS: <strong>${randomPercent}% Straight</strong>! ${getFunnyComment(randomPercent)}`
+                ];
+                
+                const randomResult = results[Math.floor(Math.random() * results.length)];
+                resultDiv.innerHTML = `<p>${randomResult}</p>`;
+                meterBar.style.width = `${randomPercent}%`;
+            }, 4000);
+        }
+        
+        function getFunnyComment(percent) {
+            if (percent > 90) return " anjayy kamu 90% normal selamat!🥳🥳";
+            if (percent > 70) return " lanjutkan😁👍.";
+            if (percent > 50) return "‍♂️ hmm baiklah kamu masih aman😁👍.";
+            if (percent > 30) return "hmm..mencurigakan,katakan padaku kawan.apakah kamu member sungut lele?🧐";
+            if (percent > 10) return " ihh gayyy pergi lo gay!";
+            return " 0% Kamu GAY💀💀 get some help bro🙏🌈";
+        }
+    </script>
+</body>
+</html>
